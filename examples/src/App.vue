@@ -7,3 +7,9 @@
     <router-view />
   </div>
 </template>
+
+<style scoped>
+#app {
+  background: #f1f1f1;
+}
+</style>
