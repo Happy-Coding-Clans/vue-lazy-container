@@ -1,5 +1,5 @@
 <template>
-  <div class="chart-container">
+  <div class="container">
     <div class="title">{{ title }}</div>
     <div ref="chart" class="chart"></div>
   </div>
@@ -82,16 +82,17 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.chart-container {
+.container {
   margin: 10px;
   padding: 10px;
   background: #fff;
   border: 1px solid #fff;
   border-radius: 10px;
   .title {
-    height: 30px;
-    line-height: 30px;
-    // padding-left:10px;
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
   }
 
   .chart {

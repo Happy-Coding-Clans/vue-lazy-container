@@ -1,15 +1,23 @@
 <template>
   <div class="bad-list">
-    <Chart1 title="Part1" />
+    <div v-for="count in containerCount" :key="count">
+      <Chart :title="'Section Chart ' + count" />
+      <DataList :title="'Section List ' + count" />
+      <Img :title="'Section Img ' + count" :index="count" />
+    </div>
   </div>
 </template>
 
 <script>
-import Chart1 from "./chart1";
+import Chart from "./chart";
+import DataList from "./data-list";
+import Img from "./img.vue";
 export default {
-  components: { Chart1 },
+  components: { Chart, DataList, Img },
   data() {
-    return {};
+    return {
+      containerCount: 75
+    };
   },
   methods: {},
   created() {}
