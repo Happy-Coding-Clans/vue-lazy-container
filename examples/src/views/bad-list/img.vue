@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <div class="title">{{ title }}</div>
-    <img style="width:100%;" :src="imgUrl" />
+    <div v-if="this.imgName">
+      <img style="width:100%" :src="getImgUrl()" />
+    </div>
   </div>
 </template>
 
@@ -20,14 +22,19 @@ export default {
   },
   data() {
     return {
-      imgUrl: ""
+      imgName: ""
     };
   },
   methods: {
+    // img url
+    getImgUrl() {
+      const { imgName } = this;
+      return require(`../../imgs/${imgName}`);
+    },
     // request
     request() {
       getImgUrl(this.index - 1).then(res => {
-        this.imgUrl = res;
+        this.imgName = res;
       });
     }
   },
