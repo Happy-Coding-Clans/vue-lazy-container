@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/list">优化前</router-link> |
+      <router-link to="/home">Home</router-link> |
+      <router-link to="/bad-list">bad list</router-link> |
       <!-- <router-link to="/about">优化后</router-link> -->
     </div>
     <router-view />
@@ -10,6 +11,6 @@
 
 <style scoped>
 #app {
-  background: #f1f1f1;
+  background: #fafafa;
 }
 </style>

@@ -16,7 +16,7 @@ export default {
   components: { Chart, DataList, Img },
   data() {
     return {
-      containerCount: 75
+      containerCount: 150
     };
   },
   methods: {},
