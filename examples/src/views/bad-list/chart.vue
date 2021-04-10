@@ -7,7 +7,6 @@
 
 <script>
 import * as echarts from "echarts";
-import { getChartData } from "@/service/mock-server.js";
 export default {
   props: {
     title: {
@@ -28,7 +27,7 @@ export default {
   },
   methods: {
     // render chart
-    renderChart(data) {
+    renderChart() {
       const myChart = echarts.init(this.$refs["chart"]);
 
       const option = {
@@ -67,7 +66,7 @@ export default {
             labelLine: {
               show: false
             },
-            data: data
+            data: this.chartData
           }
         ]
       };
@@ -77,7 +76,9 @@ export default {
     }
   },
   mounted() {
-    this.renderChart(this.chartData);
+    this.$nextTick(() => {
+      this.renderChart();
+    });
   }
 };
 </script>

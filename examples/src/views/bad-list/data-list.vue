@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import { getListData } from "@/service/mock-server.js";
 export default {
   props: {
     title: {

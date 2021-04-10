@@ -9,8 +9,16 @@
   </div>
 </template>
 
+<script>
+export default {
+  created() {
+    console.log(3);
+  }
+};
+</script>
+
 <style scoped>
 #app {
-  background: #fafafa;
+  background: #f6f6f6;
 }
 </style>
