@@ -192,7 +192,7 @@ export default {
     getImgUrl() {
       const imgName = this.imgList[this.index - 1];
 
-      return require(`../../imgs/${imgName}`);
+      return require(`@/imgs/${imgName}`);
     }
   }
 };
