@@ -16,7 +16,15 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      chartData: [
+        { value: 1048, name: "搜索引擎" },
+        { value: 735, name: "直接访问" },
+        { value: 580, name: "邮件营销" },
+        { value: 484, name: "联盟广告" },
+        { value: 300, name: "视频广告" }
+      ]
+    };
   },
   methods: {
     // render chart
@@ -66,18 +74,10 @@ export default {
 
       // 使用刚指定的配置项和数据显示图表。
       myChart.setOption(option);
-    },
-    // request
-    request() {
-      getChartData().then(res => {
-        this.$nextTick(() => {
-          this.renderChart(res);
-        });
-      });
     }
   },
-  created() {
-    this.request();
+  mounted() {
+    this.renderChart(this.chartData);
   }
 };
 </script>

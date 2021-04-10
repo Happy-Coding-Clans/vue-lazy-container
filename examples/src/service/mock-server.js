@@ -1,5 +1,5 @@
-const TIME1 = 500;
-const TIME2 = 1000;
+const TIME1 = 0;
+const TIME2 = 0;
 const TIME3 = 1500;
 const TIME4 = 2000;
 const TIME5 = 2500;
