@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div ref="container" class="container">
     <div class="title">{{ title }}</div>
     <div ref="chart" class="chart"></div>
   </div>
@@ -22,7 +22,8 @@ export default {
         { value: 580, name: "邮件营销" },
         { value: 484, name: "联盟广告" },
         { value: 300, name: "视频广告" }
-      ]
+      ],
+      isLoaded: false
     };
   },
   methods: {
@@ -76,9 +77,41 @@ export default {
     }
   },
   mounted() {
-    this.$nextTick(() => {
-      this.renderChart();
-    });
+    let callback = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (!this.isLoaded) {
+            console.log("entry::", entry);
+            this.$nextTick(() => {
+              this.renderChart();
+            });
+          } else {
+            this.isLoaded = true;
+          }
+        }
+
+        // Each entry describes an intersection change for one observed
+        // target element:
+        //   entry.boundingClientRect
+        //   entry.intersectionRatio
+        //   entry.intersectionRect
+        //   entry.isIntersecting
+        //   entry.rootBounds
+        //   entry.target
+        //   entry.time
+      });
+    };
+
+    let options = {
+      /* root: document.querySelector("#scrollArea"),
+      rootMargin: "0px",
+      threshold: 1.0 */
+    };
+
+    let observer = new IntersectionObserver(callback, options);
+
+    let target = this.$refs["container"];
+    observer.observe(target);
   }
 };
 </script>

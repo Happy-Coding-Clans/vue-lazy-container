@@ -1,9 +1,9 @@
 <template>
   <div class="bad-list">
     <div v-for="count in containerCount" :key="count">
-      <Chart :title="'Section Chart ' + count" />
-      <DataList :title="'Section List ' + count" />
-      <Img :title="'Section Img ' + count" :index="count" />
+      <Chart class="chart" :title="'Section Chart ' + count" />
+      <DataList class="data-list" :title="'Section List ' + count" />
+      <Img class="img" :title="'Section Img ' + count" :index="count" />
     </div>
   </div>
 </template>
