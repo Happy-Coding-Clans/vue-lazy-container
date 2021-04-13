@@ -2,12 +2,15 @@
   "name": "vue-lazy-container",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "libs/main.js",
   "directories": {
     "example": "examples"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:main": "webpack --config build/webpack.main.config.js",
+    "build:umd": "webpack --config build/webpack.umd.config.js",
+    "build:all": "npm run build:main && npm run build:umd"
   },
   "repository": {
     "type": "git",
@@ -18,5 +21,35 @@
   "bugs": {
     "url": "https://github.com/huangshuwei/vue-lazy-container/issues"
   },
-  "homepage": "https://github.com/huangshuwei/vue-lazy-container#readme"
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue}": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  },
+  "homepage": "https://github.com/huangshuwei/vue-lazy-container#readme",
+  "peerDependencies": {
+    "intersection-observer": ">= 0.12.0",
+    "vue": ">= 1.0.28"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.15",
+    "@babel/plugin-external-helpers": "^7.12.13",
+    "@babel/plugin-transform-modules-umd": "^7.13.0",
+    "@babel/preset-env": "^7.13.15",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^3.7.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^7.24.0",
+    "progress-bar-webpack-plugin": "^2.1.0",
+    "vue-loader": "^15.9.6",
+    "webpack": "4.46",
+    "webpack-cli": "3.3.12",
+    "webpack-dev-server": "3.11.2"
+  }
 }
