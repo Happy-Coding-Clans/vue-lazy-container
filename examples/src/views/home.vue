@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    This is home page.
+    This is a blank page.
   </div>
 </template>
 
@@ -13,4 +13,11 @@ export default {
   created() {}
 };
 </script>
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.home {
+  width: 100%;
+  height: 300px;
+  line-height: 300px;
+  text-align: center;
+}
+</style>

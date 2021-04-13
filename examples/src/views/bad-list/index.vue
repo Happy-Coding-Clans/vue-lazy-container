@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import Chart from "@/components/chart";
-import DataList from "@/components/data-list";
-import Img from "@/components/img.vue";
+import Chart from "./chart";
+import DataList from "./data-list";
+import Img from "./img.vue";
 export default {
   components: { Chart, DataList, Img },
   data() {

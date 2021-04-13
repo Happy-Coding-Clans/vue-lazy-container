@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="title">{{ title }}</div>
-    <div v-if="this.index > -1">
+    <div>
       <img style="width:100%" :src="getImgUrl()" />
     </div>
   </div>

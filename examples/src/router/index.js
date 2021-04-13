@@ -16,12 +16,12 @@ const routes = [
   {
     path: "/bad-list",
     name: "bad-list",
-    component: () => import("@/views/bad-list.vue")
+    component: () => import("@/views/bad-list/index.vue")
   },
   {
     path: "/good-list",
     name: "good-list",
-    component: () => import("@/views/good-list.vue")
+    component: () => import("@/views/good-list/index.vue")
   }
 ];
 

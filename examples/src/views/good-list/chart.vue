@@ -1,8 +1,12 @@
 <template>
-  <div ref="container" class="container">
+  <vue-lazy-container
+    class="container"
+    tag-name="div"
+    @change="intersectingChange"
+  >
     <div class="title">{{ title }}</div>
     <div ref="chart" class="chart"></div>
-  </div>
+  </vue-lazy-container>
 </template>
 
 <script>
@@ -27,6 +31,18 @@ export default {
     };
   },
   methods: {
+    // 相交改变回调
+    intersectingChange(args) {
+      const { isIntersecting } = args;
+      if (isIntersecting) {
+        if (!this.isLoaded) {
+          //console.log("chart is intersecting::", isIntersecting);
+          this.renderChart();
+          this.isLoaded = true;
+        }
+      }
+    },
+
     // render chart
     renderChart() {
       const myChart = echarts.init(this.$refs["chart"]);
@@ -75,43 +91,6 @@ export default {
       // 使用刚指定的配置项和数据显示图表。
       myChart.setOption(option);
     }
-  },
-  mounted() {
-    let callback = (entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          if (!this.isLoaded) {
-            console.log("entry::", entry);
-            this.$nextTick(() => {
-              this.renderChart();
-            });
-          } else {
-            this.isLoaded = true;
-          }
-        }
-
-        // Each entry describes an intersection change for one observed
-        // target element:
-        //   entry.boundingClientRect
-        //   entry.intersectionRatio
-        //   entry.intersectionRect
-        //   entry.isIntersecting
-        //   entry.rootBounds
-        //   entry.target
-        //   entry.time
-      });
-    };
-
-    let options = {
-      /* root: document.querySelector("#scrollArea"),
-      rootMargin: "0px",
-      threshold: 1.0 */
-    };
-
-    let observer = new IntersectionObserver(callback, options);
-
-    let target = this.$refs["container"];
-    observer.observe(target);
   }
 };
 </script>
