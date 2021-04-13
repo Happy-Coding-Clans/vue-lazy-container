@@ -16,6 +16,7 @@ export default {
   },
   data() {
     return {
+      myChart: null,
       chartData: [
         { value: 1048, name: "搜索引擎" },
         { value: 735, name: "直接访问" },
@@ -28,11 +29,11 @@ export default {
   methods: {
     // render chart
     renderChart() {
-      const myChart = echarts.init(this.$refs["chart"]);
+      this.myChart = echarts.init(this.$refs["chart"]);
 
       const option = {
         tooltip: {
-          trigger: "item"
+          show: false
         },
         legend: {
           top: "5%",
@@ -72,11 +73,19 @@ export default {
       };
 
       // 使用刚指定的配置项和数据显示图表。
-      myChart.setOption(option);
+      this.myChart.setOption(option);
     }
   },
   mounted() {
-    this.renderChart();
+    setTimeout(() => {
+      this.renderChart();
+    });
+  },
+  destroyed() {
+    if (this.myChart) {
+      console.log("bad");
+      this.myChart.dispose();
+    }
   }
 };
 </script>

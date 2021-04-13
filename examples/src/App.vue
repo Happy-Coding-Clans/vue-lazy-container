@@ -18,15 +18,17 @@
 <script>
 export default {
   created() {
-    console.log(11);
+    console.log(994);
   }
 };
 </script>
 
 <style scoped lang="less">
 #app {
+  background: #f6f6f6;
+
   #nav {
-    background: #f6f6f6;
+    background: #fff;
     height: 35px;
     line-height: 35px;
     display: flex;
@@ -36,6 +38,7 @@ export default {
     position: sticky;
     top: 0;
     z-index: 999;
+    border-bottom: 1px solid #eee;
     .nav-item {
       display: inline-flex;
 

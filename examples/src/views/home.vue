@@ -19,5 +19,6 @@ export default {
   height: 300px;
   line-height: 300px;
   text-align: center;
+  background: #fff;
 }
 </style>
