@@ -42,9 +42,6 @@ export default {
           top: "5%",
           left: "center"
         },
-        /* grid: {
-          bottom: 10
-        }, */
         series: [
           {
             name: "访问来源",
@@ -86,7 +83,6 @@ export default {
   },
   beforeDestroy() {
     if (this.myChart) {
-      console.log("bad");
       this.myChart.dispose && this.myChart.dispose();
     }
   }

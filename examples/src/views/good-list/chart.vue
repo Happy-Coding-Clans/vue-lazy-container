@@ -36,7 +36,6 @@ export default {
       const { isIntersecting } = args;
       if (isIntersecting) {
         if (!this.isLoaded) {
-          //console.log("chart is intersecting::", isIntersecting);
           this.renderChart();
           this.isLoaded = true;
         }
@@ -59,9 +58,6 @@ export default {
           top: "5%",
           left: "center"
         },
-        /* grid: {
-          bottom: 10
-        }, */
         series: [
           {
             name: "访问来源",
@@ -98,7 +94,6 @@ export default {
   },
   beforeDestroy() {
     if (this.myChart) {
-      console.log("good");
       this.myChart.dispose && this.myChart.dispose();
     }
   }
