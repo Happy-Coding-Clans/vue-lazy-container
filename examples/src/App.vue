@@ -18,7 +18,6 @@
 <script>
 export default {
   created() {
-    console.log(994);
   }
 };
 </script>

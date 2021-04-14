@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import * as echarts from "echarts";
+import echarts from "echarts";
 export default {
   props: {
     title: {
@@ -22,13 +22,21 @@ export default {
         { value: 735, name: "直接访问" },
         { value: 580, name: "邮件营销" },
         { value: 484, name: "联盟广告" },
-        { value: 300, name: "视频广告" }
+        { value: 300, name: "视频广告" },
+        { value: 500, name: "其他1" },
+        { value: 205, name: "其他1" },
+        { value: 100, name: "其他2" },
+        { value: 504, name: "其他3" },
+        { value: 400, name: "其他4" }
       ]
     };
   },
   methods: {
     // render chart
     renderChart() {
+      if (!this.$refs["chart"]){
+        return false;
+      }
       this.myChart = echarts.init(this.$refs["chart"]);
 
       const option = {
@@ -72,19 +80,19 @@ export default {
         ]
       };
 
-      // 使用刚指定的配置项和数据显示图表。
+      this.myChart.clear();
       this.myChart.setOption(option);
     }
   },
   mounted() {
-    setTimeout(() => {
+    if (this.$refs["chart"]) {
       this.renderChart();
-    });
+    }
   },
-  destroyed() {
+  beforeDestroy() {
     if (this.myChart) {
       console.log("bad");
-      this.myChart.dispose();
+      this.myChart.dispose && this.myChart.dispose();
     }
   }
 };

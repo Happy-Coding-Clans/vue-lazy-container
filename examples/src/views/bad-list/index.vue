@@ -3,18 +3,20 @@
     <div v-for="count in containerCount" :key="count">
       <DataList class="data-list" :title="'Section List ' + count" />
       <Img class="img" :title="'Section Img ' + count" :index="count" />
+      <!--  <Chart class="chart" :title="'Section Chart ' + count" /> -->
     </div>
   </div>
 </template>
 
 <script>
+/* import Chart from "./chart"; */
 import DataList from "./data-list";
 import Img from "./img.vue";
 export default {
   components: { DataList, Img },
   data() {
     return {
-      containerCount: 150
+      containerCount: 60
     };
   },
   methods: {},

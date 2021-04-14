@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import * as echarts from "echarts";
+import echarts from "echarts";
 export default {
   props: {
     title: {
@@ -45,6 +45,10 @@ export default {
 
     // render chart
     renderChart() {
+      if (!this.$refs["chart"]) {
+        return false;
+      }
+
       this.myChart = echarts.init(this.$refs["chart"]);
 
       const option = {
@@ -88,14 +92,14 @@ export default {
         ]
       };
 
-      // 使用刚指定的配置项和数据显示图表。
+      this.myChart.clear();
       this.myChart.setOption(option);
     }
   },
-  destroyed() {
+  beforeDestroy() {
     if (this.myChart) {
       console.log("good");
-      this.myChart.dispose();
+      this.myChart.dispose && this.myChart.dispose();
     }
   }
 };
