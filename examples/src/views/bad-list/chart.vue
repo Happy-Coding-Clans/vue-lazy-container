@@ -1,13 +1,20 @@
 <template>
   <div class="container">
-    <div class="title">{{ title }}</div>
+    <!-- title -->
+    <SectionTitle :title="title" :reder-time="rederTime" />
     <div ref="chart" class="chart"></div>
   </div>
 </template>
 
 <script>
 import * as echarts from "echarts";
+import renderTotalTime from "@/mixins/render-total-time.js";
+import SectionTitle from "@/components/section-title.vue";
 export default {
+  components: {
+    SectionTitle
+  },
+  mixins: [renderTotalTime],
   props: {
     title: {
       type: String,
@@ -18,18 +25,18 @@ export default {
     return {
       myChart: null,
       chartData: [
-        { value: 1048, name: "搜索引擎" },
-        { value: 735, name: "直接访问" },
-        { value: 580, name: "邮件营销" },
-        { value: 484, name: "联盟广告" },
-        { value: 300, name: "视频广告" },
+        { value: 1048, name: "Search Engines" },
+        { value: 735, name: "Direct access" },
+        { value: 580, name: "Email marketing" },
+        { value: 484, name: "Alliance advertising" },
+        { value: 300, name: "Video advertising" }
       ]
     };
   },
   methods: {
     // render chart
     renderChart() {
-      if (!this.$refs["chart"]){
+      if (!this.$refs["chart"]) {
         return false;
       }
       this.myChart = echarts.init(this.$refs["chart"]);
@@ -95,12 +102,7 @@ export default {
   background: #fff;
   border: 1px solid #fff;
   border-radius: 10px;
-  .title {
-    height: 35px;
-    line-height: 35px;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 10px;
-  }
+
 
   .chart {
     height: 500px;

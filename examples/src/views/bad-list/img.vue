@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <div class="title">{{ title }}</div>
+    <!-- title -->
+    <SectionTitle :title="title" :reder-time="rederTime" />
     <div>
       <img style="width:100%" :src="getImgUrl()" />
     </div>
@@ -8,7 +9,13 @@
 </template>
 
 <script>
+import renderTotalTime from "@/mixins/render-total-time.js";
+import SectionTitle from "@/components/section-title.vue";
 export default {
+  components: {
+    SectionTitle
+  },
+  mixins: [renderTotalTime],
   props: {
     title: {
       type: String,
@@ -43,11 +50,5 @@ export default {
   border: 1px solid #fff;
   border-radius: 10px;
   overflow: hidden;
-  .title {
-    height: 35px;
-    line-height: 35px;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 10px;
-  }
 }
 </style>

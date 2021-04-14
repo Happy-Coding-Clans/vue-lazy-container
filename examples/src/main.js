@@ -8,8 +8,12 @@ import "@/css/index.less";
 import VueLazyContainer from "../../main/index";
 Vue.use(VueLazyContainer);
 
-const VConsole = require("vconsole");
-new VConsole();
+if (process.env.NODE_ENV === "development") {
+  const VConsole = require("vconsole");
+  new VConsole();
+
+  Vue.config.devtools = true;
+}
 
 Vue.config.productionTip = false;
 

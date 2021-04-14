@@ -4,7 +4,8 @@
     tag-name="div"
     @change="visibilityChange"
   >
-    <div class="title">{{ title }}</div>
+    <!-- title -->
+    <SectionTitle :title="title" :reder-time="rederTime" />
     <div class="table-container">
       <table class="table">
         <colgroup>
@@ -36,7 +37,13 @@
 </template>
 
 <script>
+import renderTotalTime from "@/mixins/render-total-time.js";
+import SectionTitle from "@/components/section-title.vue";
 export default {
+  components: {
+    SectionTitle
+  },
+  mixins: [renderTotalTime],
   props: {
     title: {
       type: String,
@@ -84,12 +91,6 @@ export default {
   background: #fff;
   border: 1px solid #fff;
   border-radius: 10px;
-  .title {
-    height: 35px;
-    line-height: 35px;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 10px;
-  }
 
   .table-container {
     height: 300px;

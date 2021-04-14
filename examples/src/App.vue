@@ -16,10 +16,7 @@
 </template>
 
 <script>
-export default {
-  created() {
-  }
-};
+export default {};
 </script>
 
 <style scoped lang="less">

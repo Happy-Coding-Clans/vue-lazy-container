@@ -1,9 +1,22 @@
 <template>
   <div class="good-list">
     <div v-for="count in containerCount" :key="count">
-      <Chart class="chart" :title="'Good List Chart ' + count" />
-      <Img class="img" :title="'Good List Img ' + count" :index="count" />
-      <DataList class="data-list" :title="'Good List Grid ' + count" />
+      <Chart
+        class="chart"
+        :start-time="new Date().getTime()"
+        :title="'Good Chart ' + count"
+      />
+      <Img
+        class="img"
+        :start-time="new Date().getTime()"
+        :title="'Good Img ' + count"
+        :index="count"
+      />
+      <DataList
+        class="data-list"
+        :start-time="new Date().getTime()"
+        :title="'Good Grid ' + count"
+      />
     </div>
   </div>
 </template>
