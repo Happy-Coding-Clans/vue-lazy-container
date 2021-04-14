@@ -1,22 +1,22 @@
 <template>
   <div class="good-list">
     <div v-for="count in containerCount" :key="count">
-      <!-- <Chart class="chart" :title="'Section Chart ' + count" /> -->
-      <DataList class="data-list" :title="'Section List ' + count" />
-      <Img class="img" :title="'Section Img ' + count" :index="count" />
+      <Chart class="chart" :title="'Good List Chart ' + count" />
+      <Img class="img" :title="'Good List Img ' + count" :index="count" />
+      <DataList class="data-list" :title="'Good List Grid ' + count" />
     </div>
   </div>
 </template>
 
 <script>
-/* import Chart from "./chart"; */
+import Chart from "./chart";
 import DataList from "./data-list";
 import Img from "./img.vue";
 export default {
-  components: { DataList, Img },
+  components: { Chart, DataList, Img },
   data() {
     return {
-      containerCount: 60
+      containerCount: 3
     };
   },
   methods: {},

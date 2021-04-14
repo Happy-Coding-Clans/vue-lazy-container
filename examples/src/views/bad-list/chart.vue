@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import echarts from "echarts";
+import * as echarts from "echarts";
 export default {
   props: {
     title: {
@@ -23,11 +23,6 @@ export default {
         { value: 580, name: "邮件营销" },
         { value: 484, name: "联盟广告" },
         { value: 300, name: "视频广告" },
-        { value: 500, name: "其他1" },
-        { value: 205, name: "其他1" },
-        { value: 100, name: "其他2" },
-        { value: 504, name: "其他3" },
-        { value: 400, name: "其他4" }
       ]
     };
   },

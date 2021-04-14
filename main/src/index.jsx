@@ -1,8 +1,9 @@
-import IntersectionObserver from "intersection-observer";
+import "intersection-observer";
 
 export default {
     name: "vue-lazy-container",
     props: {
+        // container tag name
         tagName: {
             type: String,
             required: true
@@ -10,34 +11,38 @@ export default {
     },
     data() {
         return {
-            className: "vue__lazy__container"
+            observer: null
         };
+    },
+    methods: {
+        init() {
+            const callback = (entries, observer) => {
+                entries.forEach(entry => {
+                    this.$emit("change", entry, observer);
+                });
+            };
+
+            const options = {
+                /* root: document.querySelector("#scrollArea"),
+                rootMargin: "0px",
+                threshold: 1.0 */
+            };
+
+            this.observer = new IntersectionObserver(callback, options);
+
+            this.observer.observe(this.$el);
+        }
     },
     mounted() {
-        const callback = (entries, observer) => {
-            entries.forEach(entry => {
-                this.$emit("change", entry, observer);
-            });
-        };
-
-        let options = {
-            /* root: document.querySelector("#scrollArea"),
-            rootMargin: "0px",
-            threshold: 1.0 */
-        };
-
-        let observer = new IntersectionObserver(callback, options);
-
-        let target = this.$el.querySelector(`.${this.className}`);
-
-        observer.observe(target);
+        this.init();
+    },
+    beforeDestroy() {
+        if (this.observer) {
+            this.observer.disconnect();
+            this.observer = null;
+        }
     },
     render() {
-        const { className } = this;
-        const props = {
-            class: className
-        };
-
-        return <this.tagName {...props}>{this.$slots.default}</this.tagName>;
+        return <this.tagName>{this.$slots.default}</this.tagName>;
     }
 };

@@ -1,6 +1,6 @@
 {
   "name": "vue-lazy-container",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.1",
   "description": "",
   "files": [
     "dist",
@@ -18,12 +18,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/huangshuwei/vue-lazy-container.git"
+    "url": "git+https://github.com/Happy-Coding-Clans/vue-lazy-container.git"
   },
   "author": "https://github.com/huangshuwei",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/huangshuwei/vue-lazy-container/issues"
+    "url": "https://github.com/Happy-Coding-Clans/vue-lazy-container/issues"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"

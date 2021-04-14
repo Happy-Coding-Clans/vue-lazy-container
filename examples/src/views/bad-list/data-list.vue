@@ -1,31 +1,33 @@
 <template>
   <div class="container">
     <div class="title">{{ title }}</div>
-    <table class="table">
-      <colgroup>
-        <col />
-      </colgroup>
-      <thead>
-        <tr>
-          <th>Col1</th>
-          <th>Col2</th>
-          <th>Col3</th>
-          <th>Col4</th>
-          <th>Col5</th>
-          <th>Col6</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(item, index) in dataList" :key="index">
-          <td>{{ item.col1 }}</td>
-          <td>{{ item.col2 }}</td>
-          <td>{{ item.col3 }}</td>
-          <td>{{ item.col4 }}</td>
-          <td>{{ item.col5 }}</td>
-          <td>{{ item.col6 }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table-container">
+      <table class="table">
+        <colgroup>
+          <col />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Col1</th>
+            <th>Col2</th>
+            <th>Col3</th>
+            <th>Col4</th>
+            <th>Col5</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in dataList" :key="index">
+            <td>{{ ++index }}</td>
+            <td>{{ item.col1 }}</td>
+            <td>{{ item.col2 }}</td>
+            <td>{{ item.col3 }}</td>
+            <td>{{ item.col4 }}</td>
+            <td>{{ item.col5 }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -39,89 +41,28 @@ export default {
   },
   data() {
     return {
-      dataList: [
-        {
-          col1: "A",
-          col2: "B",
-          col3: "C",
-          col4: "D",
-          col5: "E",
-          col6: "F"
-        },
-        {
-          col1: "A",
-          col2: "B",
-          col3: "C",
-          col4: "D",
-          col5: "E",
-          col6: "F"
-        },
-        {
-          col1: "A",
-          col2: "B",
-          col3: "C",
-          col4: "D",
-          col5: "E",
-          col6: "F"
-        },
-        {
-          col1: "A",
-          col2: "B",
-          col3: "C",
-          col4: "D",
-          col5: "E",
-          col6: "F"
-        },
-        {
-          col1: "A",
-          col2: "B",
-          col3: "C",
-          col4: "D",
-          col5: "E",
-          col6: "F"
-        },
-        {
-          col1: "A",
-          col2: "B",
-          col3: "C",
-          col4: "D",
-          col5: "E",
-          col6: "F"
-        },
-        {
-          col1: "A",
-          col2: "B",
-          col3: "C",
-          col4: "D",
-          col5: "E",
-          col6: "F"
-        },
-        {
-          col1: "A",
-          col2: "B",
-          col3: "C",
-          col4: "D",
-          col5: "E",
-          col6: "F"
-        },
-        {
-          col1: "A",
-          col2: "B",
-          col3: "C",
-          col4: "D",
-          col5: "E",
-          col6: "F"
-        },
-        {
-          col1: "A",
-          col2: "B",
-          col3: "C",
-          col4: "D",
-          col5: "E",
-          col6: "F"
-        }
-      ]
+      dataList: []
     };
+  },
+  methods: {
+    initData() {
+      let dataList = [];
+
+      for (var i = 0; i < 3000; i++) {
+        dataList.push({
+          col1: "A",
+          col2: "B",
+          col3: "C",
+          col4: "D",
+          col5: "E",
+          col6: "F"
+        });
+      }
+      this.dataList = dataList;
+    }
+  },
+  created() {
+    this.initData();
   }
 };
 </script>
@@ -139,48 +80,52 @@ export default {
     margin-bottom: 10px;
   }
 
-  .table {
-    border-collapse: collapse;
-    width: 100%;
-    background-color: #fff;
-    color: #5e6d82;
-    font-size: 14px;
-    border: 1px solid #eaeefb;
+  .table-container {
+    max-height: 300px;
+    overflow: scroll;
+    .table {
+      border-collapse: collapse;
+      width: 100%;
+      background-color: #fff;
+      color: #5e6d82;
+      font-size: 14px;
+      border: 1px solid #eaeefb;
 
-    thead {
-      background-color: #f7f7f7;
-      tr {
-        height: 20px;
+      thead {
+        background-color: #f7f7f7;
+        tr {
+          height: 20px;
+        }
       }
-    }
 
-    tbody {
-      tr {
-        height: 20px;
+      tbody {
+        tr {
+          height: 20px;
+        }
       }
-    }
 
-    th {
-      text-align: left;
-      border-top: 1px solid #eaeefb;
-      white-space: nowrap;
-    }
+      th {
+        text-align: left;
+        border-top: 1px solid #eaeefb;
+        white-space: nowrap;
+      }
 
-    td,
-    th {
-      text-align: left;
-      border-bottom: 1px solid #eaeefb;
-      padding: 6px;
-      max-width: 250px;
-    }
+      td,
+      th {
+        text-align: left;
+        border-bottom: 1px solid #eaeefb;
+        padding: 6px;
+        max-width: 250px;
+      }
 
-    td:first-child,
-    th:first-child {
-      padding-left: 10px;
-    }
+      td:first-child,
+      th:first-child {
+        padding-left: 10px;
+      }
 
-    strong {
-      font-weight: 400;
+      strong {
+        font-weight: 400;
+      }
     }
   }
 }

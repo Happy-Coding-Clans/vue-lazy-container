@@ -2,14 +2,36 @@
   <vue-lazy-container
     class="container"
     tag-name="div"
-    @change="intersectingChange"
+    @change="visibilityChange"
   >
-    <template v-if="isLoaded">
-      <div class="title">{{ title }}</div>
-      <div v-for="(item, index) in dataList" :key="index">
-        {{ item.name }}
-      </div>
-    </template>
+    <div class="title">{{ title }}</div>
+    <div class="table-container">
+      <table class="table">
+        <colgroup>
+          <col />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Col1</th>
+            <th>Col2</th>
+            <th>Col3</th>
+            <th>Col4</th>
+            <th>Col5</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in dataList" :key="index">
+            <td>{{ ++index }}</td>
+            <td>{{ item.col1 }}</td>
+            <td>{{ item.col2 }}</td>
+            <td>{{ item.col3 }}</td>
+            <td>{{ item.col4 }}</td>
+            <td>{{ item.col5 }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </vue-lazy-container>
 </template>
 
@@ -23,36 +45,34 @@ export default {
   },
   data() {
     return {
-      isLoaded: false,
-      dataList: [
-        { name: "0 This is a long list.This is a long list." },
-        { name: "1 This is a long list.This is a long list." },
-        { name: "2 This is a long list.This is a long list." },
-        { name: "3 This is a long list.This is a long list." },
-        { name: "4 This is a long list.This is a long list." },
-        { name: "5 This is a long list.This is a long list." },
-        { name: "5 This is a long list.This is a long list." },
-        { name: "6 This is a long list.This is a long list." },
-        { name: "7 This is a long list.This is a long list." },
-        { name: "8 This is a long list.This is a long list." },
-        { name: "9 This is a long list.This is a long list." },
-        { name: "10 This is a long list.This is a long list." },
-        { name: "11 This is a long list.This is a long list." },
-        { name: "12 This is a long list.This is a long list." },
-        { name: "13 This is a long list.This is a long list." },
-        { name: "14 This is a long list.This is a long list." },
-        { name: "15 This is a long list.This is a long list." }
-      ]
+      dataList: []
     };
   },
   methods: {
-    // 相交改变回调
-    intersectingChange(args) {
+    // Detect when an element is becoming visible or hidden
+    visibilityChange(args) {
       const { isIntersecting } = args;
       if (isIntersecting) {
-        //console.log("data list is intersecting::", isIntersecting);
-        this.isLoaded = true;
+        if (!this.isLoaded) {
+          this.initData();
+          this.isLoaded = true;
+        }
       }
+    },
+    initData() {
+      let dataList = [];
+
+      for (var i = 0; i < 3000; i++) {
+        dataList.push({
+          col1: "A",
+          col2: "B",
+          col3: "C",
+          col4: "D",
+          col5: "E",
+          col6: "F"
+        });
+      }
+      this.dataList = dataList;
     }
   }
 };
@@ -69,6 +89,55 @@ export default {
     line-height: 35px;
     border-bottom: 1px solid #eee;
     margin-bottom: 10px;
+  }
+
+  .table-container {
+    max-height: 300px;
+    overflow: scroll;
+    .table {
+      border-collapse: collapse;
+      width: 100%;
+      background-color: #fff;
+      color: #5e6d82;
+      font-size: 14px;
+      border: 1px solid #eaeefb;
+
+      thead {
+        background-color: #f7f7f7;
+        tr {
+          height: 20px;
+        }
+      }
+
+      tbody {
+        tr {
+          height: 20px;
+        }
+      }
+
+      th {
+        text-align: left;
+        border-top: 1px solid #eaeefb;
+        white-space: nowrap;
+      }
+
+      td,
+      th {
+        text-align: left;
+        border-bottom: 1px solid #eaeefb;
+        padding: 6px;
+        max-width: 250px;
+      }
+
+      td:first-child,
+      th:first-child {
+        padding-left: 10px;
+      }
+
+      strong {
+        font-weight: 400;
+      }
+    }
   }
 }
 </style>
