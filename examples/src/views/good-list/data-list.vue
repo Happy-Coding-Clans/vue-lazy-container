@@ -92,7 +92,7 @@ export default {
   }
 
   .table-container {
-    max-height: 300px;
+    height: 300px;
     overflow: scroll;
     .table {
       border-collapse: collapse;
