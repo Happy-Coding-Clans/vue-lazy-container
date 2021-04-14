@@ -1,3 +1,5 @@
+import IntersectionObserver from "intersection-observer";
+
 export default {
     name: "vue-lazy-container",
     props: {
@@ -8,34 +10,13 @@ export default {
     },
     data() {
         return {
-            ref: "vue-lazy-container-ref"
+            className: "vue__lazy__container"
         };
     },
     mounted() {
         const callback = (entries, observer) => {
             entries.forEach(entry => {
-                this.$emit("change", entry);
-
-                /* if (entry.isIntersecting) {
-                    if (!this.isLoaded) {
-                        console.log("entry::", entry);
-                        this.$nextTick(() => {
-                            this.renderChart();
-                        });
-                    } else {
-                        this.isLoaded = true;
-                    }
-                } */
-
-                // Each entry describes an intersection change for one observed
-                // target element:
-                //   entry.boundingClientRect
-                //   entry.intersectionRatio
-                //   entry.intersectionRect
-                //   entry.isIntersecting
-                //   entry.rootBounds
-                //   entry.target
-                //   entry.time
+                this.$emit("change", entry, observer);
             });
         };
 
@@ -47,13 +28,14 @@ export default {
 
         let observer = new IntersectionObserver(callback, options);
 
-        let target = this.$refs[this.ref];
+        let target = this.$el.querySelector(`.${this.className}`);
+
         observer.observe(target);
     },
     render() {
-        const { ref } = this;
+        const { className } = this;
         const props = {
-            ref
+            class: className
         };
 
         return <this.tagName {...props}>{this.$slots.default}</this.tagName>;

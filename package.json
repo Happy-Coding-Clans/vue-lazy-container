@@ -2,9 +2,13 @@
   "name": "vue-lazy-container",
   "version": "1.0.0",
   "description": "",
-  "main": "libs/main.js",
-  "directories": {
-    "example": "examples"
+  "files": [
+    "dist",
+    "main"
+  ],
+  "main": "libs/index.js",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -16,7 +20,7 @@
     "type": "git",
     "url": "git+https://github.com/huangshuwei/vue-lazy-container.git"
   },
-  "author": "",
+  "author": "https://github.com/huangshuwei",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/huangshuwei/vue-lazy-container/issues"
@@ -51,5 +55,8 @@
     "webpack": "4.46",
     "webpack-cli": "3.3.12",
     "webpack-dev-server": "3.11.2"
+  },
+  "dependencies": {
+    "intersection-observer": "^0.12.0"
   }
 }

@@ -9,16 +9,16 @@ const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 const config = require("./config");
 const { libraryName } = require("./common");
 
-module.exports = function (env) {
+module.exports = function(env) {
     return {
         mode: "production",
         entry: {
-            index: ["./main/index.js"],
+            index: ["./main/index.js"]
         },
 
         output: {
-            path: path.join(__dirname, "../libs"),
-            filename: "main.js",
+            path: path.join(__dirname, "../dist"),
+            filename: "index.js",
             chunkFilename: "[id].js",
             libraryExport: "default",
             library: libraryName,
@@ -26,7 +26,7 @@ module.exports = function (env) {
             commonjs 分配给 exports 对象;
             commonjs2 分配给 module.exports 对象;
             */
-            libraryTarget: "commonjs2",
+            libraryTarget: "commonjs2"
         },
 
         module: {
@@ -35,7 +35,7 @@ module.exports = function (env) {
                 {
                     test: /\.(js|jsx)$/,
                     use: "babel-loader",
-                    exclude: /node_modules/,
+                    exclude: /node_modules/
                 },
 
                 // vue loader
@@ -43,25 +43,25 @@ module.exports = function (env) {
                     test: /\.vue$/,
                     use: [
                         {
-                            loader: "vue-loader",
-                        },
-                    ],
-                },
-            ],
+                            loader: "vue-loader"
+                        }
+                    ]
+                }
+            ]
         },
 
         optimization: {
-            minimize: true,
+            minimize: true
         },
 
         resolve: {
             extensions: [".js", ".jsx", ".vue"],
-            modules: [path.resolve("./node_modules")],
+            modules: [path.resolve("./node_modules")]
             //alias: config.alias,
         },
 
         externals: config.externals,
 
-        plugins: [new ProgressBarPlugin(), new VueLoaderPlugin()],
+        plugins: [new ProgressBarPlugin(), new VueLoaderPlugin()]
     };
 };

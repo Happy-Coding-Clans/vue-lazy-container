@@ -17,8 +17,8 @@ module.exports = function(env) {
         },
 
         output: {
-            path: path.join(__dirname, "../libs/umd"),
-            filename: "index.js",
+            path: path.join(__dirname, "../dist"),
+            filename: "index.umd.js",
             chunkFilename: "[id].js",
             libraryTarget: "umd",
             libraryExport: "default",
@@ -54,7 +54,7 @@ module.exports = function(env) {
 
         resolve: {
             extensions: [".js", ".jsx", ".vue"],
-            modules: [path.resolve("./node_modules")],
+            modules: [path.resolve("./node_modules")]
         },
 
         externals: {

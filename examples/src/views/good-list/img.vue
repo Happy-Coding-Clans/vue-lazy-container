@@ -9,6 +9,7 @@
       <div>
         <img style="width:100%" :src="getImgUrl()" />
       </div>
+      <!-- your content -->
     </template>
   </vue-lazy-container>
 </template>
