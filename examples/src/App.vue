@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link class="nav-item" tag="li" to="/home">
-        <a>How to work</a></router-link
+        <a>How It works</a></router-link
       >
       <router-link class="nav-item" tag="li" to="/bad-list">
         <a>Bad List</a></router-link
