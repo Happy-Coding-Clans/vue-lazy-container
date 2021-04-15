@@ -30,7 +30,8 @@ export default {
             handler: function() {
                 this.destroyObserver();
                 this.createObserver();
-            }
+            },
+            deep: true
         }
     },
     methods: {
