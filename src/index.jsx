@@ -39,6 +39,8 @@ export default {
         createObserver() {
             const callback = (entries, observer) => {
                 entries.forEach(entry => {
+                    console.log("entry::", entry);
+                    console.log("observer::", observer);
                     this.$emit("change", entry, observer);
                 });
             };

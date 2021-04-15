@@ -10,6 +10,7 @@
       <router-link class="nav-item" tag="li" to="/good-list">
         <a>Good List</a></router-link
       >
+      <li class="nav-item"><a>Github</a></li>
     </div>
     <router-view />
   </div>

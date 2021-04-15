@@ -88,7 +88,7 @@ export default {
         /* root: document.querySelector("#scroll-area"),
          */
         root: null,
-    /*     rootMargin: "0px", */
+        /*     rootMargin: "0px", */
         threshold: [0, 0.2, 0.4, 0.6, 0.8, 1]
       },
 
@@ -107,7 +107,11 @@ export default {
       this.intersectionRatio = Math.round(intersectionRatio * 100) + "%";
     }
   },
-  created() {}
+  mounted() {
+    document.querySelector(".scroll-area").scrollTop = 230;
+
+    this.intersectionOption.root = document.querySelector(".scroll-area");
+  }
 };
 </script>
 <style lang="less" scoped>
@@ -185,7 +189,7 @@ export default {
       overflow: scroll;
       border: 1px solid #eee;
       .scroll-area-content {
-        height: 600px;
+        height: 700px;
         display: flex;
         align-items: center;
         .box-container {
