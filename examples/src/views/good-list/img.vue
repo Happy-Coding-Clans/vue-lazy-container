@@ -2,7 +2,7 @@
   <vue-lazy-container
     class="container"
     tag-name="div"
-    @change="intersectingChange"
+    @change="visibilityChange"
   >
     <template v-if="isLoaded">
       <!-- title -->
@@ -47,8 +47,7 @@ export default {
 
       return require(`@/imgs/${imgName}`);
     },
-    // 相交改变回调
-    intersectingChange(args) {
+    visibilityChange(args) {
       const { isIntersecting } = args;
       if (isIntersecting) {
         this.isLoaded = true;

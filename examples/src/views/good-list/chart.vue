@@ -2,7 +2,7 @@
   <vue-lazy-container
     class="container"
     tag-name="div"
-    @change="intersectingChange"
+    @change="visibilityChange"
   >
     <!-- title -->
     <SectionTitle :title="title" :reder-time="rederTime" />
@@ -38,8 +38,8 @@ export default {
     };
   },
   methods: {
-    // 相交改变回调
-    intersectingChange(args) {
+    visibilityChange(args) {
+      console.log("sadasdas");
       const { isIntersecting } = args;
       if (isIntersecting) {
         if (!this.isLoaded) {
