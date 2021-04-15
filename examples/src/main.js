@@ -3,7 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import "@/css/index.less";
 
-import VueLazyContainer from "../../main/index";
+import VueLazyContainer from "../../src/index.js";
 Vue.use(VueLazyContainer);
 
 if (process.env.NODE_ENV === "development") {

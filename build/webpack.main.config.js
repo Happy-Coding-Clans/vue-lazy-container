@@ -13,7 +13,7 @@ module.exports = function(env) {
     return {
         mode: "production",
         entry: {
-            index: ["./main/index.js"]
+            index: ["./src/index.js"]
         },
 
         output: {

@@ -1,4 +1,4 @@
-import VueLazyContainer from "./src/index.jsx";
+import VueLazyContainer from "./index.js";
 
 VueLazyContainer.install = function(Vue) {
     Vue.component(VueLazyContainer.name, VueLazyContainer);
