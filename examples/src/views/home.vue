@@ -2,35 +2,76 @@
   <div class="home">
     <div class="operation">
       <div class="condition">
-        threshold:
-        <van-checkbox-group
-          v-model="intersectionOption.threshold"
-          direction="horizontal"
-        >
-          <van-checkbox
-            v-for="value in thresholds"
-            :key="value"
-            :name="value"
-            shape="square"
-            icon-size="14px"
-            >{{ value }}</van-checkbox
-          >
-        </van-checkbox-group>
+        <div class="condition-item">
+          <div class="left">
+            threshold
+          </div>
+          <div class="right">
+            <span class="gray">
+              {{ intersectionOption.threshold }}
+            </span>
+
+            <van-popover
+              v-model="showThresholdPopover"
+              placement="left-start"
+              trigger="click"
+            >
+              <div class="threshold-popover">
+                <van-checkbox-group v-model="intersectionOption.threshold">
+                  <van-checkbox
+                    v-for="value in thresholds"
+                    :key="value"
+                    :name="value"
+                    shape="square"
+                    icon-size="14px"
+                    >{{ value }}</van-checkbox
+                  >
+                </van-checkbox-group>
+              </div>
+              <template #reference>
+                <i class="iconfont icon-shezhi"></i>
+              </template>
+            </van-popover>
+          </div>
+        </div>
+        <div class="condition-item">
+          <div class="left">
+            rootMargin (px)
+          </div>
+          <div class="right">
+            <van-stepper v-model="rootMargin" />
+          </div>
+        </div>
+        <div class="condition-item">
+          <div class="left">
+            root
+          </div>
+          <div class="right">
+            <van-switch v-model="hasRoot" size="18px" />
+          </div>
+        </div>
       </div>
-      <div class="result">intersection ratio:{{ intersectionRatio }}</div>
+      <div class="result">
+        intersection ratio:
+        <span class="result-ratio">{{ intersectionRatio }}</span>
+      </div>
     </div>
     <div class="container">
       <div class="blank down">
         Scroll Down ↓
       </div>
-      <vue-lazy-container
-        class="block down"
-        tag-name="div"
-        :intersection-option="intersectionOption"
-        @change="visibilityChange"
-      >
-        Box
-      </vue-lazy-container>
+      <div class="scroll-area">
+        <div class="scroll-area-content">
+          <vue-lazy-container
+            class="box-container"
+            tag-name="div"
+            :intersection-option="intersectionOption"
+            @change="visibilityChange"
+          >
+            Box
+          </vue-lazy-container>
+        </div>
+      </div>
       <div class="blank up">
         Scroll Up ↑
       </div>
@@ -44,15 +85,19 @@ export default {
     return {
       // intersection option
       intersectionOption: {
-        /* root: document.querySelector("#scrollArea"),
+        /* root: document.querySelector("#scroll-area"),
          */
-        rootMargin: "100px",
-        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
+        root: null,
+    /*     rootMargin: "0px", */
+        threshold: [0, 0.2, 0.4, 0.6, 0.8, 1]
       },
 
+      rootMargin: 0,
+      thresholds: [0, 0.2, 0.4, 0.6, 0.8, 1],
+      showThresholdPopover: false,
+      hasRoot: false,
       // intersection ratio
-      intersectionRatio: 0,
-      thresholds: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
+      intersectionRatio: 0
     };
   },
   methods: {
@@ -68,32 +113,49 @@ export default {
 <style lang="less" scoped>
 .threshold-popover {
   padding: 10px;
-  .van-checkbox {
-    padding: 3px;
-  }
 }
+
 .home {
   width: 100%;
   background: #fff;
 
   .operation {
     width: 100%;
-    height: 100px;
+    /*  height: 100px; */
     position: sticky;
     top: 40px;
     border: 1px solid #eee;
     z-index: 999;
     background: #fff;
-    padding: 10px;
 
     .condition {
-      .threshold-popover {
-        padding: 10px;
+      padding: 10px;
+
+      .condition-item {
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &:not(:last-child) {
+          border-bottom: 1px solid #eee;
+        }
+
+        .right {
+          .gray {
+            color: #666;
+            margin-right: 10px;
+          }
+        }
       }
     }
 
     .result {
-      margin-top: 15px;
+      border-top: 1px dashed #ccc;
+      padding: 10px;
+
+      .result-ratio {
+        font-size: 20px;
+      }
     }
   }
 
@@ -116,14 +178,26 @@ export default {
       }
     }
 
-    .block {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 200px;
-      height: 200px;
-      background: #ccc;
+    .scroll-area {
+      width: 250px;
+      height: 250px;
       margin: 0 auto;
+      overflow: scroll;
+      border: 1px solid #eee;
+      .scroll-area-content {
+        height: 600px;
+        display: flex;
+        align-items: center;
+        .box-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 170px;
+          height: 170px;
+          background: #ccc;
+          margin: 0 auto;
+        }
+      }
     }
   }
 }
