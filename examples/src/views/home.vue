@@ -47,7 +47,11 @@
             root
           </div>
           <div class="right">
-            <van-switch v-model="hasRoot" size="18px" />
+            <van-switch
+              v-model="hasRoot"
+              size="18px"
+              @change="intersectionRootChange"
+            />
           </div>
         </div>
       </div>
@@ -60,16 +64,19 @@
       <div class="blank down">
         Scroll Down ↓
       </div>
-      <div class="scroll-area">
+      <div :class="['scroll-area', hasRoot ? 'root' : '']">
         <div class="scroll-area-content">
-          <vue-lazy-container
-            class="box-container"
-            tag-name="div"
-            :intersection-option="intersectionOption"
-            @change="visibilityChange"
-          >
-            Box
-          </vue-lazy-container>
+          <div class="scroll-area-content-warpper">
+            Scroll Me!
+            <vue-lazy-container
+              class="box-container"
+              tag-name="div"
+              :intersection-option="intersectionOption"
+              @change="visibilityChange"
+            >
+              Box
+            </vue-lazy-container>
+          </div>
         </div>
       </div>
       <div class="blank up">
@@ -101,6 +108,19 @@ export default {
     };
   },
   methods: {
+    // intersection root change
+    intersectionRootChange() {
+      const { hasRoot } = this;
+
+      console.log("hasRoot::", hasRoot);
+
+      if (hasRoot) {
+        this.intersectionOption.root = document.querySelector(".scroll-area");
+      } else {
+        this.intersectionOption.root = null;
+      }
+    },
+    // visibility change
     visibilityChange(intersection, observer) {
       const { intersectionRatio } = intersection;
 
@@ -109,8 +129,7 @@ export default {
   },
   mounted() {
     document.querySelector(".scroll-area").scrollTop = 230;
-
-    this.intersectionOption.root = document.querySelector(".scroll-area");
+    this.intersectionRootChange();
   }
 };
 </script>
@@ -188,10 +207,16 @@ export default {
       margin: 0 auto;
       overflow: scroll;
       border: 1px solid #eee;
+
+      &.root {
+        border: 2px solid red;
+      }
+
       .scroll-area-content {
         height: 700px;
         display: flex;
         align-items: center;
+        justify-content: center;
         .box-container {
           display: flex;
           justify-content: center;
