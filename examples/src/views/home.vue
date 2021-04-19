@@ -96,11 +96,11 @@ export default {
          */
         root: null,
         /*     rootMargin: "0px", */
-        threshold: [0, 0.2, 0.4, 0.6, 0.8, 1]
+        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
       },
 
       rootMargin: 0,
-      thresholds: [0, 0.2, 0.4, 0.6, 0.8, 1],
+      thresholds: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
       showThresholdPopover: false,
       hasRoot: false,
       // intersection ratio
@@ -167,6 +167,7 @@ export default {
           .gray {
             color: #666;
             margin-right: 10px;
+            font-size: 12px;
           }
         }
       }
