@@ -39,7 +39,6 @@ export default {
   },
   methods: {
     visibilityChange(args) {
-      console.log("sadasdas");
       const { isIntersecting } = args;
       if (isIntersecting) {
         if (!this.isLoaded) {
