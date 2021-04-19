@@ -10,7 +10,11 @@
       <router-link class="nav-item" tag="li" to="/good-list">
         <a>Good List</a></router-link
       >
-      <li class="nav-item"><a>Github</a></li>
+      <li class="nav-item">
+        <a href="https://github.com/Happy-Coding-Clans/vue-lazy-container"
+          >Github</a
+        >
+      </li>
     </div>
     <router-view />
   </div>
