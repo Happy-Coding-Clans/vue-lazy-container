@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="condition-item">
-          <div class="left">rootMargin ({{ rootMargin }}px)</div>
+          <div class="left">rootMargin</div>
           <div class="right">
             <div class="root-margin-slider">
               <van-slider
@@ -46,7 +46,7 @@
                 @change="intersectionRootMarginChange"
               >
                 <template #button>
-                  <div class="custom-button">{{ rootMargin }}</div>
+                  <div class="custom-button">{{ rootMargin }}px</div>
                 </template>
               </van-slider>
             </div>
@@ -149,7 +149,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .custom-button {
-  width: 26px;
+  width: 35px;
   color: #fff;
   font-size: 10px;
   line-height: 18px;
@@ -195,7 +195,7 @@ export default {
           }
 
           .root-margin-slider {
-            width: 170px;
+            width: 150px;
             margin-right: 8px;
           }
         }
