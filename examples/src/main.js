@@ -6,13 +6,22 @@ import "@/css/index.less";
 import VueLazyContainer from "../../src/index.js";
 Vue.use(VueLazyContainer);
 
-import { Popover, Checkbox, CheckboxGroup, Switch, Cell, Stepper } from "vant";
+import {
+  Popover,
+  Checkbox,
+  CheckboxGroup,
+  Switch,
+  Cell,
+  Stepper,
+  Slider
+} from "vant";
 Vue.use(Popover);
 Vue.use(Checkbox);
 Vue.use(CheckboxGroup);
 Vue.use(Switch);
 Vue.use(Cell);
 Vue.use(Stepper);
+Vue.use(Slider );
 
 if (process.env.NODE_ENV === "development") {
   const VConsole = require("vconsole");

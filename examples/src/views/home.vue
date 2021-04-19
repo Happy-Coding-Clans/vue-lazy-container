@@ -35,11 +35,22 @@
           </div>
         </div>
         <div class="condition-item">
-          <div class="left">
-            rootMargin (px)
-          </div>
+          <div class="left">rootMargin ({{ rootMargin }}px)</div>
           <div class="right">
-            <van-stepper v-model="rootMargin" />
+            <div class="root-margin-slider">
+              <van-slider
+                v-model="rootMargin"
+                active-color="#1989fa"
+                :min="0"
+                :max="150"
+                @change="intersectionRootMarginChange"
+              >
+                <template #button>
+                  <div class="custom-button">{{ rootMargin }}</div>
+                </template>
+              </van-slider>
+            </div>
+            <!-- <van-stepper v-model="rootMargin" /> -->
           </div>
         </div>
         <div class="condition-item">
@@ -95,7 +106,7 @@ export default {
         /* root: document.querySelector("#scroll-area"),
          */
         root: null,
-        /*     rootMargin: "0px", */
+        rootMargin: "0px",
         threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
       },
 
@@ -108,11 +119,14 @@ export default {
     };
   },
   methods: {
+    // intersection rootMargin change
+    intersectionRootMarginChange() {
+      this.intersectionOption.rootMargin = `${this.rootMargin}px`;
+    },
+
     // intersection root change
     intersectionRootChange() {
       const { hasRoot } = this;
-
-      console.log("hasRoot::", hasRoot);
 
       if (hasRoot) {
         this.intersectionOption.root = document.querySelector(".scroll-area");
@@ -134,6 +148,16 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.custom-button {
+  width: 26px;
+  color: #fff;
+  font-size: 10px;
+  line-height: 18px;
+  text-align: center;
+  background-color: #1989fa;
+  border-radius: 100px;
+}
+
 .threshold-popover {
   padding: 10px;
 }
@@ -168,6 +192,11 @@ export default {
             color: #666;
             margin-right: 10px;
             font-size: 12px;
+          }
+
+          .root-margin-slider {
+            width: 170px;
+            margin-right: 8px;
           }
         }
       }
