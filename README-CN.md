@@ -1,13 +1,13 @@
 # vue-lazy-container
 
-**English** | [中文](./README-CN.md)
+**中文** | [English](./README.md)
 
 ## Introduction
 
-vue lazy container,By listening to the visibility of elements in the page, decide whether to load resources and render.
+vue 懒加载容器，通过监听元素在页面中的可见性，决定是否加载资源并渲染。
 
 ## Why
-When the page content exceeds one screen, we often want to load and render only the data of the current screen,As the page scrolls, load and render the following. This can greatly improve the speed of page opening,And reduce additional network requests（xhr）。vue-lazy-container can just help us solve this problem.
+当页面内容超过一屏时，我们往往希望只加载并渲染当前一屏的数据，而随着页面的滚动，再去加载并渲染下面的内容。这样的好处可以大大提升页面打开速度，以及减少额外的网络请求（xhr）。vue-lazy-container 正好可以帮我们解决这个问题。
 
 ## Install
 
@@ -23,14 +23,14 @@ yarn add vue-lazy-container
 
 ## Usage
 
-Write the following in mian.js：
+在你的 main.js 中写如下代码：
 
 ```javascript
 import VueLazyContainer from "vue-lazy-container";
 Vue.use(VueLazyContainer);
 ```
 
-Example:
+示例:
 
 ```javascript
 <template>
@@ -69,14 +69,14 @@ export default {
 
 **Props**
 
-| Prop    | Description         | Type              | Optional value                       | Default |
+| 参数    | 说明         | 类型              | 可选值                       | 默认值 |
 | ------- | ------------ | ----------------- | ---------------------------- | ------ |
-| tagName | Element TagName | `Element.tagName` | div、span、p、img、i、a etc. | -      |
+| tagName | 容器节点类型 | `Element.tagName` | div、span、p、img、i、a etc. | -      |
 | intersectionOption | Intersection Observer Option | `Object` | root、rootMargin、threshold | -      |
 
 
 **Event**
 
-| Event Name | Description         | Callback Parameters   |
+| 事件名称 | 说明         | 回调参数   |
 | -------- | ------------ | ---------- |
-| change   | Element visible change events | [IntersectionObserverEntry](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry)、observer |
+| change   | 元素可见变化事件 | [IntersectionObserverEntry](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry)、observer |
