@@ -84,3 +84,7 @@ export default {
 | 事件名称 | 说明         | 回调参数   |
 | -------- | ------------ | ---------- |
 | change   | 元素可见变化事件 | [IntersectionObserverEntry](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry)、observer |
+
+## License
+
+http://www.opensource.org/licenses/mit-license.php

@@ -84,3 +84,7 @@ export default {
 | Event Name | Description         | Callback Parameters   |
 | -------- | ------------ | ---------- |
 | change   | Element visible change events | [IntersectionObserverEntry](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry)、observer |
+
+## License
+
+http://www.opensource.org/licenses/mit-license.php

@@ -1,7 +1,13 @@
 {
   "name": "vue-lazy-container",
-  "version": "1.0.0-beta.2",
-  "description": "",
+  "version": "1.0.0",
+  "description": "listening to the visibility of elements in the page",
+  "keywords": [
+    "vue",
+    "lazy",
+    "container",
+    "optimization"
+  ],
   "files": [
     "dist",
     "src"
@@ -22,7 +28,7 @@
     "url": "git+https://github.com/Happy-Coding-Clans/vue-lazy-container.git"
   },
   "author": "https://github.com/huangshuwei",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Happy-Coding-Clans/vue-lazy-container/issues"
   },
