@@ -1,5 +1,7 @@
 # vue-lazy-container
 
+[![npm](https://img.shields.io/npm/v/vue-lazy-container.svg)](https://www.npmjs.com/package/vue-lazy-container)
+
 **English** | [中文](./README-CN.md)
 
 ## Introduction
