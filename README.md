@@ -4,7 +4,7 @@
 
 ## Introduction
 
-vue lazy container,By listening to the visibility of elements in the page, decide whether to load resources and render.
+vue lazy container,By detect the visibility of elements in the page, decide whether to load resources and render.
 
 ## Why
 When the page content exceeds one screen, we often want to load and render only the data of the current screen,As the page scrolls, load and render the following. This can greatly improve the speed of page opening,And reduce additional network requests（xhr）。vue-lazy-container can just help us solve this problem.
