@@ -8,6 +8,11 @@ export default {
             type: String,
             required: true
         },
+        // id
+        id: {
+            type: [String, Number],
+            default: ""
+        },
         // IntersectionObserver option
         intersectionOption: {
             type: Object,
@@ -39,7 +44,7 @@ export default {
         createObserver() {
             const callback = (entries, observer) => {
                 entries.forEach(entry => {
-                    this.$emit("change", entry, observer);
+                    this.$emit("change", entry, observer, this.id);
                 });
             };
 
@@ -59,9 +64,11 @@ export default {
         }
     },
     mounted() {
+        console.log("created id ::",this.id)
         this.createObserver();
     },
     beforeDestroy() {
+        console.log("destroied id ::",this.id)
         this.destroyObserver();
     },
     render() {
