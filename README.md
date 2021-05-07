@@ -40,7 +40,7 @@ Example:
 
 ```javascript
 <template>
-  <vue-lazy-container tag-name="div" @change="visibilityChange">
+  <vue-lazy-container tag-name="div" id=1 @change="visibilityChange">
     <template v-if="isLoaded">
       <!-- your content -->
     </template>
@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     // visibility change
-    visibilityChange(entry, observer) {
+    visibilityChange(entry, observer, id) {
       const { isIntersecting } = entry;
 
       // visibility
@@ -78,6 +78,7 @@ export default {
 | Prop    | Description         | Type              | Optional value                       | Default |
 | ------- | ------------ | ----------------- | ---------------------------- | ------ |
 | tagName | Element TagName | `Element.tagName` | div、span、p、img、i、a etc. | -      |
+| id                 | container id                    | `String, Number`  | -                            | -      |
 | intersectionOption | Intersection Observer Option | `Object` | root、rootMargin、threshold | -      |
 
 
@@ -85,7 +86,7 @@ export default {
 
 | Event Name | Description         | Callback Parameters   |
 | -------- | ------------ | ---------- |
-| change   | Element visible change events | [IntersectionObserverEntry](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry)、observer |
+| change   | Element visible change events | [IntersectionObserverEntry](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry)、observer、id |
 
 ## License
 
