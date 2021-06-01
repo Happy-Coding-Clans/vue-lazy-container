@@ -1,6 +1,6 @@
 {
   "name": "vue-lazy-container",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "listening to the visibility of elements in the page",
   "keywords": [
     "vue",

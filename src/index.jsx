@@ -64,11 +64,9 @@ export default {
         }
     },
     mounted() {
-        console.log("created id ::",this.id)
         this.createObserver();
     },
     beforeDestroy() {
-        console.log("destroied id ::",this.id)
         this.destroyObserver();
     },
     render() {
