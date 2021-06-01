@@ -63,7 +63,7 @@ export default {
       // visibility
       if (isIntersecting) {
         this.isLoaded = true;
-        // you can ajax request or other logic
+        // you can send ajax request or other logic
       }
     }
   }
