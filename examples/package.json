@@ -8,9 +8,10 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "core-js": "^3.6.5",
+    "core-js": "^3.17.2",
     "echarts": "^5.0.2",
     "intersection-observer": "^0.12.0",
+    "regenerator-runtime": "^0.13.9",
     "vant": "^2.12.13",
     "vconsole": "^3.4.1",
     "vue": "^2.6.11",
@@ -34,5 +35,10 @@
     "less-loader": "7.3.0",
     "sass-loader": "10.1.1",
     "vue-template-compiler": "^2.6.11"
-  }
+  },
+  "browserslist": [
+    "last 2 version",
+    "> 1%",
+    "not ie <= 8"
+  ]
 }

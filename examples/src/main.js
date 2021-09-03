@@ -1,3 +1,7 @@
+// polyfills
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
@@ -21,7 +25,7 @@ Vue.use(CheckboxGroup);
 Vue.use(Switch);
 Vue.use(Cell);
 Vue.use(Stepper);
-Vue.use(Slider );
+Vue.use(Slider);
 
 if (process.env.NODE_ENV === "development") {
   const VConsole = require("vconsole");
