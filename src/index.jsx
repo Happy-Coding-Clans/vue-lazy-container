@@ -55,6 +55,22 @@ export default {
             this.observer.observe(this.$el);
         },
 
+        // is support IntersectionObserver
+        isSupport() {
+            if (
+                !("IntersectionObserver" in window) ||
+                !("IntersectionObserverEntry" in window) ||
+                !(
+                    "intersectionRatio" in
+                    window.IntersectionObserverEntry.prototype
+                )
+            ) {
+                console.warn(
+                    "Your browser does not support IntersectionObserver!"
+                );
+            }
+        },
+
         // destroy observer
         destroyObserver() {
             if (this.observer) {
@@ -64,6 +80,7 @@ export default {
         }
     },
     mounted() {
+        this.isSupport();
         this.createObserver();
     },
     beforeDestroy() {
