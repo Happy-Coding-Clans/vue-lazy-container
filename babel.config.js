@@ -5,7 +5,7 @@ module.exports = {
             "@babel/env",
             {
                 targets: {
-                    ie: "10",
+                    ie: "11",
                     edge: "17",
                     firefox: "60",
                     chrome: "67",
