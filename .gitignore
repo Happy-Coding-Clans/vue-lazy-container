@@ -26,4 +26,3 @@ pnpm-debug.log*
 # test coverage
 coverage
 tests/unit/coverage
-/yarn.lock
